@@ -11,14 +11,8 @@ def seleccionar_archivo():
     archivo = filedialog.askopenfilename(title="Seleccionar archivo")
     if archivo:
         etiqueta_archivo.configure(text=f"Archivo seleccionado: {archivo}")
-        return archivo
     else:
         etiqueta_archivo.configure(text="No se ha seleccionado ningún archivo.")
-
-def encriptar_archivo():
-    archivo = seleccionar_archivo()
-    if archivo:
-        print(f"Archivo a encriptar: {archivo}")
 
 # Crear ventana principal
 ventana = ctk.CTk()
