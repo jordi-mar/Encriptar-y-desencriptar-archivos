@@ -1,4 +1,4 @@
-LIBRERIAS NECESARIAS: customtkinter, tkinter, cryptography, os, PIL
+LIBRERIAS NECESARIAS: customtkinter, tkinter, cryptography, os, PIL (para instalarlas poneis en la terminal pip install (nombre de la libreria) yya.)
 
 main.py: de momento lo unico que hace es que se pueda subir el archivo
 
