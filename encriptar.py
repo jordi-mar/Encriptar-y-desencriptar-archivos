@@ -53,4 +53,4 @@ def encriptar_archivo(ruta_archivo, clave, archivo_salida):
 ruta = "archivo.txt"  # Ruta del archivo a encriptar
 clave = "mi_clave_segura"  # Clave para la encriptación (puedes personalizarla)
 archivo_salida = "archivo_encriptado.bin"  # Archivo de salida
-encriptar_archivo(ruta, clave, archivo_salida)
+print('hola')
