@@ -11,6 +11,7 @@ DESCRIPCIÓN DEL PRODUCTO
 Esta herramienta permite la encriptación de archivos utilizando el cifrado AES en modo CBC con la integración de una interfaz de usuario  basada en customtkinter. Está diseñada para facilitar la selección y la encriptación de archivos con un enfoque sencillo y accesible.
 
 REQUISITOS DEL SISTEMA
+
 -Antes de ejecutar el código, asegúrese de cumplir con los siguientes requisitos:
 
 ·Python 3.8 o superior
