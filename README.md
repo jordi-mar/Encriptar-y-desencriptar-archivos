@@ -54,7 +54,8 @@ Una vez abierta la interfaz, siga estos pasos:
 
 3.El archivo encriptado se guardará en el mismo directorio que el archivo original con un nuevo nombre especificado por el programa.
 
-Notas
+NOTAS
+
 La funcionalidad de encriptación aún no está completamente integrada en la interfaz.
 
 Asegúrese de que los archivos de imagen (iconos) existan en el directorio antes de ejecutar el programa para evitar errores.
