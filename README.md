@@ -48,11 +48,11 @@ Siga estos pasos para usar la herramienta:
 
 Una vez abierta la interfaz, siga estos pasos:
 
-Haga clic en "Subir Archivo" para seleccionar un archivo de su sistema.
+1.Haga clic en "Subir Archivo" para seleccionar un archivo de su sistema.
 
-Haga clic en "Encriptar archivo" para iniciar el proceso de encriptación (funcionalidad pendiente de implementar).
+2.Haga clic en "Encriptar archivo" para iniciar el proceso de encriptación (funcionalidad pendiente de implementar).
 
-El archivo encriptado se guardará en el mismo directorio que el archivo original con un nuevo nombre especificado por el programa.
+3.El archivo encriptado se guardará en el mismo directorio que el archivo original con un nuevo nombre especificado por el programa.
 
 Notas
 La funcionalidad de encriptación aún no está completamente integrada en la interfaz.
