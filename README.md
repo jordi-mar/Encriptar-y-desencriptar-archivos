@@ -63,5 +63,6 @@ Use una clave segura para proteger los archivos encriptados.
 
 
 CONTRIBUCIÓN
+
 Para colaborar con este proyecto, envíe una solicitud de extracción al repositorio correspondiente o contacte con el equipo de desarrollo.
 
