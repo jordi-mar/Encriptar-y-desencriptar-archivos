@@ -4,6 +4,8 @@
 main.py: de momento lo unico que hace es que se pueda subir el archivo
 
 encriptar.py: encripta el archivo, pero no esta conectado con el codigo de main.py
+
+
 DESCRIPCIÓN DEL PRODUCTO
 Esta herramienta permite la encriptación de archivos utilizando el cifrado AES en modo CBC con la integración de una interfaz de usuario  basada en customtkinter. Está diseñada para facilitar la selección y la encriptación de archivos con un enfoque sencillo y accesible.
 REQUISITOS DEL SISTEMA
