@@ -40,7 +40,7 @@ Para instalar las dependencias necesarias, ejecute el siguiente comando:
 
 pip install cryptography customtkinter Pillow pandas
 
-Cómo usar la herramienta
+
 Siga estos pasos para usar la herramienta:
 1. Asegúrese de que los archivos encriptar.py y main.py estén en el mismo directorio.
 2. Ejecute el archivo principal:
