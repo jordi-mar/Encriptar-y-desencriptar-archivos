@@ -21,78 +21,119 @@ def leer_archivo():
 # Crear ventana principal
 ventana = ctk.CTk()
 ventana.title("Selector de Archivos")
-ventana.geometry("700x350")
+ventana.geometry("1000x400")
 
-# Crear frame para poner los botones dentro del frame
-frame = ctk.CTkFrame(ventana, width=300, height=100, fg_color='transparent')
+# Crear frame principal
+frame = ctk.CTkFrame(ventana, width=500, height=400, fg_color='transparent')
 frame.pack(expand=True)
 
 # Cargar la fuente personalizada
-fuente_personalizada = ctk.CTkFont(family= 'Coolvetica', size= 35)
+fuente_personalizada = ctk.CTkFont(family='Coolvetica', size=35)
 
 # Etiqueta para mostrar el archivo seleccionado
 etiqueta_archivo = ctk.CTkLabel(
-    frame, text="No se ha seleccionado ningún archivo.", wraplength=600, justify="left", font= fuente_personalizada
+    frame, text="No se ha seleccionado ningún archivo.", wraplength=600, justify="left", font=fuente_personalizada
 )
-etiqueta_archivo.pack(pady=20)
+etiqueta_archivo.pack(pady=10)
 
-# Cargar ícono de archivo
+# Cargar imagenes
 try:
     foto = Image.open('File_Icon.png')
-    icono_imagen = ctk.CTkImage(light_image=foto, dark_image=foto, size=(44, 44))
-except FileNotFoundError:
-    print("Error: File_Icon.png no encontrado. El botón se mostrará sin imagen.")
-    icono_imagen = None
-    
-try:
+    icono_imagen = ctk.CTkImage(dark_image=foto, size=(44, 44))
     foto2 = Image.open('Encrypt_Icon.png')
-    encriptar_imagen = ctk.CTkImage(light_image= foto2, dark_image= foto2, size=(44,44))
+    encriptar_imagen = ctk.CTkImage(dark_image=foto2, size=(44, 44))
+    foto3 = Image.open('Key_Icon.png')
+    llave_imagen = ctk.CTkImage(dark_image=foto3, size=(44, 44))
 except FileNotFoundError:
-    print("Error: Encrypt_Icon.png no encontrado. El botón se mostrará sin imagen.")
+    print("Error: Algunas imágenes no fueron encontradas. Los botones se mostrarán sin imagen.")
+    icono_imagen = None
     encriptar_imagen = None
-    
+    llave_imagen = None
+
+# Crear subframes para organizar botones en filas
+frame_fila1 = ctk.CTkFrame(frame, fg_color='transparent')
+frame_fila1.pack(pady=10)
+
+frame_fila2 = ctk.CTkFrame(frame, fg_color='transparent')
+frame_fila2.pack(pady=10)
+
+frame_fila3 = ctk.CTkFrame(frame, fg_color='transparent')
+frame_fila3.pack(pady=10)
+
 # Botón para subir archivos
 boton_subir = ctk.CTkButton(
-    frame,
+    frame_fila1,
     text="Subir Archivo",
     corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
     border_width=2,
     hover_color='#362522',
-    font= fuente_personalizada,
+    font=fuente_personalizada,
     image=icono_imagen,
     command=seleccionar_archivo
 )
-boton_subir.pack(padx=10, pady=10, side='left')
+boton_subir.pack(padx=10, pady=5, side='left')
 
-#Boton para encriptar
+# Botón para encriptar archivo
 boton_encriptar = ctk.CTkButton(
-    frame,
-    text='Encriptar archivo',
+    frame_fila2,
+    text="Encriptar Archivo",
     corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
     border_width=2,
     hover_color='#362522',
-    font= fuente_personalizada,
-    image= encriptar_imagen,
-    command=leer_archivo)
-boton_encriptar.pack(padx=10, pady=10, side='right')
+    font=fuente_personalizada,
+    image=encriptar_imagen,
+    command=leer_archivo
+)
+boton_encriptar.pack(padx=10, pady=5, side='left')
 
-#Boton para desencriptar
-boton_encriptar = ctk.CTkButton(
-    frame,
-    text='Desencriptar archivo',
+# Botón para desencriptar archivo
+boton_desencriptar = ctk.CTkButton(
+    frame_fila2,
+    text="Desencriptar Archivo",
     corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
     border_width=2,
     hover_color='#362522',
-    font= fuente_personalizada,
-    image= encriptar_imagen,
-    command=leer_archivo)
-boton_encriptar.pack(padx=10, pady=10, side='right')
+    font=fuente_personalizada,
+    image=encriptar_imagen,
+    command=leer_archivo
+)
+boton_desencriptar.pack(padx=10, pady=5, side='left')
 
-# Ejecutar la aplicación
+# Botón para crear una llave
+boton_crear = ctk.CTkButton(
+    frame_fila3,
+    text="Crear Llave",
+    corner_radius=40,
+    fg_color='transparent',
+    border_color='#FF5733',
+    border_width=2,
+    hover_color='#362522',
+    font=fuente_personalizada,
+    image=llave_imagen,
+    command=leer_archivo
+)
+boton_crear.pack(padx=10, pady=5, side='left')
+
+# Botón para cargar una llave
+boton_cargar = ctk.CTkButton(
+    frame_fila3,
+    text="Cargar Llave",
+    corner_radius=40,
+    fg_color='transparent',
+    border_color='#FF5733',
+    border_width=2,
+    hover_color='#362522',
+    font=fuente_personalizada,
+    image=llave_imagen,
+    command=leer_archivo
+)
+boton_cargar.pack(padx=10, pady=5, side='left')
+
+# Iniciar la aplicación
 ventana.mainloop()
