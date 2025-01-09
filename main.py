@@ -1,27 +1,61 @@
 import customtkinter as ctk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PIL import Image
+import encriptar as en
+import os
 
 # Configuración inicial de customtkinter
-ctk.set_appearance_mode("Dark")  # "System", "Dark", "Light"
-ctk.set_default_color_theme("blue")  # "blue", "dark-blue", "green"
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue")
 
+archivo = None
+llave = None
+
+# Funciones para manejar eventos
 def seleccionar_archivo():
-    """Abre un cuadro de diálogo para seleccionar un archivo y muestra el nombre del archivo seleccionado."""
+    global archivo
     archivo = filedialog.askopenfilename(title="Seleccionar archivo")
     if archivo:
         etiqueta_archivo.configure(text=f"Archivo seleccionado: {archivo}")
     else:
         etiqueta_archivo.configure(text="No se ha seleccionado ningún archivo.")
 
-def leer_archivo():
-    """Funcion para leer el archivo"""
-    pass  # Implementar en el futuro
+def encriptar():
+    if not archivo:
+        messagebox.showwarning("Archivo Missing", "No se ha seleccionado un archivo para desencriptar.")
+    elif not llave:
+        messagebox.showwarning("Key Missing", "No se ha encontrado una llave válida. Genera o selecciona una llave.")
+    else:
+        try:
+            en.encrypt_file(archivo, llave)
+        except Exception as e:
+            messagebox.showerror("Error", f"Ha ocurrido un error al encriptar el archivo: {e}")
+
+def desencriptar():
+    if not archivo:
+        messagebox.showwarning("Archivo Missing", "No se ha seleccionado un archivo para desencriptar.")
+    elif not llave:
+        messagebox.showwarning("Key Missing", "No se ha encontrado una llave válida. Genera o selecciona una llave.")
+    else:
+        try:
+            en.decrypt_file(archivo, llave)
+        except Exception as e:
+            messagebox.showerror("Error", f"Ha ocurrido un error al desencriptar el archivo: {e}")
+
+def generar_llave():
+    global llave
+    llave, llave_nombre = en.generate_key()
+    etiqueta_key.configure(text=f"Llave seleccionada: {llave_nombre}")
+
+def cargar_llave():
+    global llave
+    llave, llave_nombre = en.load_key()
+    etiqueta_key.configure(text=f"Llave seleccionada: {llave_nombre}")
 
 # Crear ventana principal
 ventana = ctk.CTk()
 ventana.title("Selector de Archivos")
-ventana.geometry("1000x400")
+ventana.geometry("1000x600")
 
 # Crear frame principal
 frame = ctk.CTkFrame(ventana, width=500, height=400, fg_color='transparent')
@@ -36,7 +70,13 @@ etiqueta_archivo = ctk.CTkLabel(
 )
 etiqueta_archivo.pack(pady=10)
 
-# Cargar imagenes
+# Etiqueta para mostrar la key
+etiqueta_key = ctk.CTkLabel(
+    frame, text="No se ha seleccionado ninguna llave.", wraplength=600, justify="left", font=fuente_personalizada
+)
+etiqueta_key.pack(pady=10)
+
+# Cargar imágenes
 try:
     foto = Image.open('File_Icon.png')
     icono_imagen = ctk.CTkImage(dark_image=foto, size=(44, 44))
@@ -86,7 +126,7 @@ boton_encriptar = ctk.CTkButton(
     hover_color='#362522',
     font=fuente_personalizada,
     image=encriptar_imagen,
-    command=leer_archivo
+    command=encriptar
 )
 boton_encriptar.pack(padx=10, pady=5, side='left')
 
@@ -101,7 +141,7 @@ boton_desencriptar = ctk.CTkButton(
     hover_color='#362522',
     font=fuente_personalizada,
     image=encriptar_imagen,
-    command=leer_archivo
+    command=desencriptar
 )
 boton_desencriptar.pack(padx=10, pady=5, side='left')
 
@@ -116,7 +156,7 @@ boton_crear = ctk.CTkButton(
     hover_color='#362522',
     font=fuente_personalizada,
     image=llave_imagen,
-    command=leer_archivo
+    command=generar_llave
 )
 boton_crear.pack(padx=10, pady=5, side='left')
 
@@ -131,7 +171,7 @@ boton_cargar = ctk.CTkButton(
     hover_color='#362522',
     font=fuente_personalizada,
     image=llave_imagen,
-    command=leer_archivo
+    command=cargar_llave
 )
 boton_cargar.pack(padx=10, pady=5, side='left')
 
