@@ -1,10 +1,9 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from PIL import Image
-import pandas as pd
 
 # Configuración inicial de customtkinter
-ctk.set_appearance_mode("System")  # "System", "Dark", "Light"
+ctk.set_appearance_mode("Dark")  # "System", "Dark", "Light"
 ctk.set_default_color_theme("blue")  # "blue", "dark-blue", "green"
 
 def seleccionar_archivo():
@@ -22,18 +21,18 @@ def leer_archivo():
 # Crear ventana principal
 ventana = ctk.CTk()
 ventana.title("Selector de Archivos")
-ventana.geometry("500x200")
+ventana.geometry("700x350")
 
 # Crear frame para poner los botones dentro del frame
 frame = ctk.CTkFrame(ventana, width=300, height=100, fg_color='transparent')
 frame.pack(expand=True)
 
 # Cargar la fuente personalizada
-fuente_personalizada = ctk.CTkFont(family= 'Coolvetica', size= 20)
+fuente_personalizada = ctk.CTkFont(family= 'Coolvetica', size= 35)
 
 # Etiqueta para mostrar el archivo seleccionado
 etiqueta_archivo = ctk.CTkLabel(
-    frame, text="No se ha seleccionado ningún archivo.", wraplength=450, justify="left", font= fuente_personalizada
+    frame, text="No se ha seleccionado ningún archivo.", wraplength=600, justify="left", font= fuente_personalizada
 )
 etiqueta_archivo.pack(pady=20)
 
@@ -56,7 +55,7 @@ except FileNotFoundError:
 boton_subir = ctk.CTkButton(
     frame,
     text="Subir Archivo",
-    corner_radius=38,
+    corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
     border_width=2,
@@ -68,10 +67,10 @@ boton_subir = ctk.CTkButton(
 boton_subir.pack(padx=10, pady=10, side='left')
 
 #Boton para leer los archivos
-button = ctk.CTkButton(
+boton_encriptar = ctk.CTkButton(
     frame,
     text='Encriptar archivo',
-    corner_radius=38,
+    corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
     border_width=2,
@@ -79,7 +78,7 @@ button = ctk.CTkButton(
     font= fuente_personalizada,
     image= encriptar_imagen,
     command=leer_archivo)
-button.pack(padx=10, pady=10, side='right')
+boton_encriptar.pack(padx=10, pady=10, side='right')
 
 # Ejecutar la aplicación
 ventana.mainloop()
