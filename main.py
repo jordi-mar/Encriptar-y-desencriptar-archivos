@@ -28,7 +28,7 @@ frame = ctk.CTkFrame(ventana, width=500, height=400, fg_color='transparent')
 frame.pack(expand=True)
 
 # Cargar la fuente personalizada
-fuente_personalizada = ctk.CTkFont(family='Arial', size=35)
+fuente_personalizada = ctk.CTkFont(family='Coolvetica', size=35)
 
 # Etiqueta para mostrar el archivo seleccionado
 etiqueta_archivo = ctk.CTkLabel(
