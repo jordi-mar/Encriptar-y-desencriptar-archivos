@@ -214,5 +214,3 @@ if __name__ == "__main__":
     root = ctk.CTk()
     app = FileEncryptorApp(root)
     root.mainloop()
-
-    #holaaaaa
