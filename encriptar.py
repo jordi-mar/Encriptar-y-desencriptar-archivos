@@ -18,3 +18,4 @@ def load_key(self):
     else:
         messagebox.showerror("Key Missing",
                              "No se ha encontrado un archivo de key válido. Genera o selecciona otra key.")
+
