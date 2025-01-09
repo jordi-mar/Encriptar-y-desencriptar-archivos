@@ -45,3 +45,30 @@ def encrypt_file(self):
         messagebox.showinfo("Éxito", f"Archivo encriptado correctamente: {self.selected_file}")
     except Exception as e:
         messagebox.showerror("Error", f"Ha ocurrido un error: {e}")
+
+def decrypt_file(self):
+    if not hasattr(self, 'selected_file') or not self.selected_file:
+        messagebox.showerror("Error", "No se ha seleccionado un archivo para desencriptar.")
+        return
+
+    if not self.key:
+        messagebox.showerror("Error", "Key no cargada. Por favor carga o genera una key primero.")
+        return
+
+    try:
+        with open(self.selected_file, "r") as file:
+            encrypted_base64 = file.read()
+
+        # Convertir el texto base64 de nuevo a datos binarios
+        encrypted_data = base64.b64decode(encrypted_base64)
+
+        fernet = Fernet(self.key)
+        decrypted_data = fernet.decrypt(encrypted_data)
+
+        # Sobrescribir el archivo original con los datos desencriptados
+        with open(self.selected_file, "wb") as file:
+            file.write(decrypted_data)
+
+        messagebox.showinfo("Éxito", f"Archivo desencriptado correctamente: {self.selected_file}")
+    except Exception as e:
+        messagebox.showerror("Error", f"Ha ocurrido un error: {e}")
