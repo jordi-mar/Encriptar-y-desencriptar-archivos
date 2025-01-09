@@ -45,7 +45,7 @@ try:
     foto3 = Image.open('Key_Icon.png')
     llave_imagen = ctk.CTkImage(dark_image=foto3, size=(44, 44))
 except FileNotFoundError:
-    print("Error: Algunas imágenes no fueron encontradas. Los botones se mostrarán sin imagen.")
+    print("Error: Algún icono no se encontró. Los botones se mostrarán sin icono.")
     icono_imagen = None
     encriptar_imagen = None
     llave_imagen = None
