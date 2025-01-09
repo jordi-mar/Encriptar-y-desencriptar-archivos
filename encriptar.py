@@ -19,3 +19,29 @@ def load_key(self):
         messagebox.showerror("Key Missing",
                              "No se ha encontrado un archivo de key válido. Genera o selecciona otra key.")
 
+def encrypt_file(self):
+    if not hasattr(self, 'selected_file') or not self.selected_file:
+        messagebox.showerror("Error", "No se ha seleccionado un archivo para encriptar.")
+        return
+
+    if not self.key:
+        messagebox.showerror("Error", "No se ha cargado la key. Por favor carga o genera una key primero.")
+        return
+
+    try:
+        with open(self.selected_file, "rb") as file:
+            data = file.read()
+
+        fernet = Fernet(self.key)
+        encrypted_data = fernet.encrypt(data)
+
+        # Convertir los datos encriptados a base64 para que sea legible como texto
+        encrypted_base64 = base64.b64encode(encrypted_data).decode('utf-8')
+
+        # Sobrescribir el archivo original con los datos encriptados (en base64)
+        with open(self.selected_file, "w") as file:
+            file.write(encrypted_base64)
+
+        messagebox.showinfo("Éxito", f"Archivo encriptado correctamente: {self.selected_file}")
+    except Exception as e:
+        messagebox.showerror("Error", f"Ha ocurrido un error: {e}")
