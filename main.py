@@ -66,10 +66,24 @@ boton_subir = ctk.CTkButton(
 )
 boton_subir.pack(padx=10, pady=10, side='left')
 
-#Boton para leer los archivos
+#Boton para encriptar
 boton_encriptar = ctk.CTkButton(
     frame,
     text='Encriptar archivo',
+    corner_radius=40,
+    fg_color='transparent',
+    border_color='#FF5733',
+    border_width=2,
+    hover_color='#362522',
+    font= fuente_personalizada,
+    image= encriptar_imagen,
+    command=leer_archivo)
+boton_encriptar.pack(padx=10, pady=10, side='right')
+
+#Boton para desencriptar
+boton_encriptar = ctk.CTkButton(
+    frame,
+    text='Desencriptar archivo',
     corner_radius=40,
     fg_color='transparent',
     border_color='#FF5733',
