@@ -6,12 +6,34 @@
 ### Descripción ###
 Esta aplicación permite a los usuarios encriptar y desencriptar todo tipo de archivos de manera sencilla utilizando claves generadas por el sistema. Es ideal para proteger información sensible de accesos no autorizados. Hay que tener en cuenta que se encripta de manera simétrica, es decir, hay que usar la misma llave para encriptar que para desencriptar.
  
- ### Dependencias ###
-Este programa hace uso de: customtkinter, cryptography, PIL, base64, os, tkinter.
+ ### Requisitos previos ###
+Antes de ejecutar este programa, asegúrate de tener instalados los siguientes requisitos:
+
+1. **Python 3.8 o superior**.
+2. Las siguientes librerias de Python:
+   - `customtkinter`
+   - `cryptography`
+   - `Pillow`
+   - `Fernet`
+3. Imágenes necesarias:
+   - `File_Icon.png`
+   - `Encrypt_Icon.png`
+   - `Key_Icon.png`
+
+
 
 Para instalar las dependencias necesarias hay que poner este comando en la terminal:
 ```
-pip install customtkinter pillow cryptography
+pip install customtkinter
+```
+```
+pip install cryptography
+```
+```
+pip install Fernet
+```
+```
+pip install Pillow
 ```
 
 ### Funcionamiento del codigo ###
